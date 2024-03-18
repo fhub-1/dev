@@ -1,3 +1,5 @@
+import { ClerkProvider } from "@clerk/nextjs";
+
 import { PrismicPreview } from "@prismicio/next";
 import { repositoryName } from "@/prismicio";
 
@@ -8,8 +10,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
-      <PrismicPreview repositoryName={repositoryName} />
+      <ClerkProvider>
+        <body>{children}</body>
+        <PrismicPreview repositoryName={repositoryName} />
+      </ClerkProvider>
     </html>
   );
 }
