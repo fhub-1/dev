@@ -1,7 +1,17 @@
+import "./globals.css";
+import { Montserrat } from "next/font/google";
+
 import { ClerkProvider, auth } from "@clerk/nextjs";
 
 import { PrismicPreview } from "@prismicio/next";
 import { repositoryName } from "@/prismicio";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-montserrat",
+});
 
 export default function RootLayout({
   children,
@@ -10,7 +20,7 @@ export default function RootLayout({
 }>) {
   // auth().protect();
   return (
-    <html lang="en">
+    <html lang="en" className={montserrat.variable}>
       <ClerkProvider
         appearance={{
           variables: { colorPrimary: "#000000" },
@@ -28,7 +38,16 @@ export default function RootLayout({
           },
         }}
       >
-        <body>{children}</body>
+        <body>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </body>
         <PrismicPreview repositoryName={repositoryName} />
       </ClerkProvider>
     </html>
