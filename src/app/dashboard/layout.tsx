@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import Logo from "@/components/Logo";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import { UserButton } from "@clerk/nextjs";
@@ -8,6 +9,7 @@ function Layout({ children }: { children: ReactNode }) {
     <div className="flex max-h-screen min-h-screen min-w-full flex-col bg-background">
       <nav className="flex h-[60px] items-center justify-between border-b border-border px-4 py-2">
         <Logo />
+        {/* <Header /> */}
         <div className="flex items-center gap-4">
           <ThemeSwitcher />
           <UserButton afterSignOutUrl="/" />

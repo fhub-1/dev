@@ -6,6 +6,8 @@ import { ClerkProvider, auth } from "@clerk/nextjs";
 import { PrismicPreview } from "@prismicio/next";
 import { repositoryName } from "@/prismicio";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -45,7 +47,9 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            {/* <Header /> */}
             {children}
+            <Footer />
           </ThemeProvider>
         </body>
         <PrismicPreview repositoryName={repositoryName} />
